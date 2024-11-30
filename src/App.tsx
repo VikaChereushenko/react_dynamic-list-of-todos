@@ -76,8 +76,8 @@ export const App: React.FC = () => {
                 <TodoList
                   todos={filteredTodos}
                   visible={modalVisible}
-                  setTodoOnClick={setTodo}
-                  showModal={setModalVisible}
+                  onTodoSelect={setTodo}
+                  onModalToggle={setModalVisible}
                 />
               )}
             </div>
@@ -86,7 +86,7 @@ export const App: React.FC = () => {
       </div>
 
       {modalVisible && todo && (
-        <TodoModal todo={todo} showModal={setModalVisible} />
+        <TodoModal todo={todo} onModalToggle={setModalVisible} />
       )}
     </>
   );

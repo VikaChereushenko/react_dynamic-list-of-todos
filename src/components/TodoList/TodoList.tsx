@@ -5,22 +5,22 @@ import { Todo } from '../../types/Todo';
 type Props = {
   todos: Todo[];
   visible: boolean;
-  setTodoOnClick: (arg: Todo) => void;
-  showModal: (arg: boolean) => void;
+  onTodoSelect: (arg: Todo) => void;
+  onModalToggle : (arg: boolean) => void;
 };
 
 export const TodoList: React.FC<Props> = ({
   todos,
   visible,
-  setTodoOnClick,
-  showModal,
+  onTodoSelect,
+  onModalToggle ,
 }) => {
   const handleView = (id: number) => {
     const newTodo = todos.find(todo => todo.id === id);
 
     if (newTodo) {
-      setTodoOnClick(newTodo);
-      showModal(true);
+      onTodoSelect(newTodo);
+      onModalToggle (true);
     }
   };
 

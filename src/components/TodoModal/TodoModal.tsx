@@ -7,19 +7,19 @@ import { Todo } from '../../types/Todo';
 
 type Props = {
   todo: Todo;
-  showModal: (arg: boolean) => void;
+  onModalToggle: (arg: boolean) => void;
 };
 
-export const TodoModal: React.FC<Props> = ({ todo, showModal }) => {
+export const TodoModal: React.FC<Props> = ({ todo, onModalToggle }) => {
   const { id: todoId, title: todoTitle, completed, userId } = todo;
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     getUser(userId).then(setUser);
-  }, []);
+  }, [userId]);
 
   const handleClose = () => {
-    showModal(false);
+    onModalToggle(false);
   };
 
   return (
